@@ -4,12 +4,11 @@
 /* NOTE: THIS IS A RIGHT HANDED SYSTEM */
 #include <cmath>    // this is subject to change in the future
 
+#define sqrt(x) std::sqrt(x)    // FIXME: MAKE THIS BETTER   
 
 namespace Jackal    // the definition of the numerical precision system
 {
     using numeric = float;    
-    using sqrt_type = numeric(*)(numeric);
-    sqrt_type sqrt = std::sqrt;  // overloaded sqrt that works for any numeric type
 }
 
 namespace Jackal
