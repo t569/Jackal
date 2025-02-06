@@ -14,6 +14,13 @@ Jackal::Vector3 Jackal::Vector3::operator*(const numeric value) const
 }
 
 
+/* the dot product */
+Jackal::numeric Jackal::Vector3::operator*(const Vector3& other) const 
+{
+    return x*other.x + y*other.y + z*other.z;
+}
+
+
 /* returns the sum of two Vector3 objects as a Vector3 object */
 Jackal::Vector3 Jackal::Vector3::operator+(const Jackal::Vector3& other) const
 {
@@ -54,6 +61,51 @@ void Jackal::Vector3::operator-=(const Jackal::Vector3& other)
     y -= other.y;
     z -= other.z;
 }
+
+
+/* add a Scaled Vector3 to self */
+void Jackal::Vector3::addScaledVector(const Jackal::Vector3& other, numeric num)
+{
+    x += (other.x)*num;
+    y += (other.y)*num;
+    z += (other.z)*num;
+}
+
+
+/* the component product of 2 Vector3 s */
+Jackal::Vector3 Jackal::Vector3::componentProduct(const Jackal::Vector3& other)
+{
+    return Vector3((*this).x * other.x, (*this).y * other.y, (*this).z * other.z);
+}
+
+
+
+/* the self updated component product */
+void Jackal::Vector3::componentProductUpdate(const Jackal::Vector3& other)
+{
+    x *= other.x;
+    y *= other.y;
+    z *= other.z;
+}
+
+
+
+/* the scalar/dot product between two vectors */
+Jackal::numeric Jackal::Vector3::scalarProduct(const Jackal::Vector3& other) const
+{
+    return x*other.x + y*other.y + z*other.z;
+}
+
+
+
+/* the vector/cross product between two vectors producing a vector itself */
+Jackal::Vector3 Jackal::Vector3::vectorProduct(const Jackal::Vector3& other) const 
+{
+    return Vector3(y*other.z - z*other.y,
+                   z*other.x - x*other.z,
+                   x*other.y - y*other.x);
+}
+
 
 
 /* invert the values of the Vector3 */
