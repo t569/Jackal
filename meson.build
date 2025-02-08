@@ -4,8 +4,12 @@ project('jackal', 'cpp',
   default_options: ['cpp_std=c++17'])
 
 # # Automatically find all .cpp files in src/
-sources = files('main.cpp', 'src/jackal/core.cpp') #FIXME: make this more efficient
 
+sources = [                          #FIXME: make this more efficient
+          'main.cpp',
+          'src/jackal/core.cpp',
+          'src/jackal/particle/cpp',
+]
 # Specify the include directory for the header file
 inc_dir = include_directories('include')
 
