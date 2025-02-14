@@ -42,6 +42,7 @@ namespace Jackal
 
 
         // work out the and update acceleration from current force
+        // acceleration will then be force_accel + default_accel
         Vector3 update_Accel = acceleration;    
         update_Accel.addScaledVector(forceAccumulator, inverseMass);
 
@@ -54,6 +55,7 @@ namespace Jackal
         velocity *= numeric_pow(damping, interval_dt);
 
         // clear the forces
+        clearAccumulator();
 
     }
 
@@ -119,5 +121,24 @@ namespace Jackal
         return acceleration;
     }
 
+    /* clear the accumulator */
+    void Particle::clearAccumulator()
+    {
+        forceAccumulator.clear();
+    }
+    
+    /* add forces to the accumulator */
+    void Particle::addForce(const Vector3& force)
+    {
+        forceAccumulator += force;
+    }
+
+    /* addForce alternate form */
+    void Particle::addForce(const numeric f_comp_x, const numeric f_comp_y, const numeric f_comp_z)
+    {
+        forceAccumulator.x += f_comp_x;
+        forceAccumulator.y += f_comp_y;
+        forceAccumulator.z += f_comp_z;
+    }
 }
 

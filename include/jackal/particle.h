@@ -25,8 +25,8 @@ namespace Jackal
 
             // integrate the particles position and acceleration over time
             void integrate(numeric interval_dt); 
-            
-              
+
+
             /* getters and setters for the mass */
             numeric getInverseMass() const;
             numeric getMass() const;
@@ -52,7 +52,10 @@ namespace Jackal
             void setAcceleration(const numeric a_x, const numeric a_y, const numeric a_z);
             Vector3 getAcceleration() const;
 
-
+            /* force functions */
+            void clearAccumulator();
+            void addForce(const Vector3& force);
+            void addForce(const numeric f_comp_x, const numeric f_comp_y, const numeric f_comp_z);
             
 
     };
