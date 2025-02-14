@@ -67,7 +67,7 @@ namespace Jackal
 
             numeric squareMagnitude() const;             // get the square magnitude
 
-
+            void clear();
 
 
 

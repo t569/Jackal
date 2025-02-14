@@ -134,4 +134,12 @@ namespace Jackal{
     {
         return x*x + y*y + z*z;
     }
+
+    /* clear: sets all the fields to zero */
+    void Vector3::clear()
+    {
+        (*this).x = static_cast<numeric>(0);
+        (*this).y = static_cast<numeric>(0);
+        (*this).z = static_cast<numeric>(0);
+    }
 }
