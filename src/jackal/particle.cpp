@@ -1,5 +1,6 @@
 #include <jackal/particle.h>
 #include <assert.h>
+
 namespace Jackal 
 {
     numeric Particle::getInverseMass() const
@@ -25,18 +26,98 @@ namespace Jackal
     }
 
     /* TODO: write the integrator function well */
-    void Particle::integrate(numeric interval)
+    void Particle::integrate(numeric interval_dt)
     {
-        assert(interval > 0.0);
+        assert(interval_dt > 0.0);
 
-        // work out the position
+        // dont integrate anything with zero invers mass i.e. infinite mass
+        if(inverseMass <= static_cast<numeric>(0.0)) return;
 
-        // work out the acceleration
 
-        // work out the velocity
+        // update the position
+        position.addScaledVector(velocity, interval_dt);
+
+        /* i can remove this if the accelerations are relatively small */
+        position.addScaledVector(acceleration,interval_dt*interval_dt*0.5);
+
+
+        // work out the and update acceleration from current force
+        Vector3 update_Accel = acceleration;    
+        update_Accel.addScaledVector(forceAccumulator, inverseMass);
+
+
+        // update the velocity
+        velocity.addScaledVector(update_Accel, interval_dt);
+
 
         // work out the drag
+        velocity *= numeric_pow(damping, interval_dt);
 
+        // clear the forces
 
     }
+
+    void Particle::setDamping(numeric damping_factor)
+    {
+        damping = damping_factor;
+    }
+
+    numeric Particle::getDamping() const{
+        return damping;
+    }
+
+    void Particle::setPosition(const Vector3& position)
+    {
+        (*this).position = position;
+    }
+
+    void Particle::setPosition(const numeric x, const numeric y, const numeric z)
+    {
+        position.x = x;
+        position.y = y;
+        position.z = z;
+    }
+
+    Vector3 Particle::getPosition() const
+    {
+        return position;
+    }
+
+    
+    void Particle::setVelocity(const Vector3& velocity)
+    {
+        (*this).velocity = velocity;
+    }
+
+    void Particle::setVelocity(const numeric v_x, const numeric v_y, const numeric v_z)
+    {
+        velocity.x = v_x;
+        velocity.y = v_y;
+        velocity.z = v_z;
+    }
+
+    Vector3 Particle::getVelocity() const
+    {
+        return velocity;
+    }
+
+    
+    void Particle::setAcceleration(const Vector3& accel)
+    {
+        (*this).acceleration = accel;
+    }
+
+    void Particle::setAcceleration(const numeric a_x, const numeric a_y, const numeric a_z)
+    {
+        acceleration.x = a_x;
+        acceleration.y = a_y;
+        acceleration.z = a_z;
+    }
+
+    Vector3 Particle::getAcceleration() const
+    {
+        return acceleration;
+    }
+
 }
+

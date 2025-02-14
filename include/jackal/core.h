@@ -4,7 +4,9 @@
 /* NOTE: THIS IS A RIGHT HANDED SYSTEM */
 #include <cmath>    // this is subject to change in the future
 
-#define sqrt(x) std::sqrt(x)    // FIXME: MAKE THIS BETTER   
+#define sqrt(x) std::sqrt(x)    // FIXME: MAKE THIS BETTER
+
+#define numeric_pow(x, y) std::pow(x, y)
 
 namespace Jackal    // the definition of the numerical precision system
 {
