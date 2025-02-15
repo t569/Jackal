@@ -52,7 +52,7 @@ namespace Jackal
 
 
         // work out the drag
-        velocity *= numeric_pow(damping, interval_dt);
+        velocity *= std::pow(damping, interval_dt);
 
         // clear the forces
         clearAccumulator();

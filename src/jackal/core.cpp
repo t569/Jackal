@@ -127,7 +127,7 @@ namespace Jackal{
 
     numeric Vector3::magnitude() const  // these names are getting disgusting lmao
     {
-        return sqrt(x*x + y*y + z*z);   // look into the code for sqrt
+        return std::sqrt(x*x + y*y + z*z);   // look into the code for sqrt
     }
 
     numeric Vector3::squareMagnitude() const
