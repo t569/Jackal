@@ -1,5 +1,5 @@
-#ifndef PARTICLE_H
-#define PARTICLE_H
+#ifndef JACKAL_PARTICLE_H
+#define JACKAL_PARTICLE_H
 
 #include <jackal/core.h>    // for the vector functionality
 

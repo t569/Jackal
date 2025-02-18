@@ -1,5 +1,5 @@
-#ifndef CORE_H
-#define CORE_H
+#ifndef JACKAL_CORE_H
+#define JACKAL_CORE_H
 
 /* NOTE: THIS IS A RIGHT HANDED SYSTEM */
 #include <cmath>    // this is subject to change in the future
