@@ -9,6 +9,7 @@ sources = [                          #FIXME: make this more efficient
           'main.cpp',
           'src/jackal/core.cpp',
           'src/jackal/particle/cpp',
+          'src/jackal/forcegen.cpp',
 ]
 # Specify the include directory for the header file
 inc_dir = include_directories('include')
